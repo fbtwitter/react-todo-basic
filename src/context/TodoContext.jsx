@@ -13,20 +13,20 @@ export const TodoProvider = ({ children }) => {
 
     const [status, setStatus] = useState('all')
 
-    useEffect(() => {
-        fetchTodo()
-    }, [])
+    // useEffect(() => {
+    //     fetchTodo()
+    // }, [])
 
-    const fetchTodo = async () => {
-        const response = await fetch(
-            `http://localhost:5000/todo?_sort=id&_order=desc`
-        )
+    // const fetchTodo = async () => {
+    //     const response = await fetch(
+    //         `http://localhost:5000/todo?_sort=id&_order=desc`
+    //     )
 
-        const data = await response.json()
+    //     const data = await response.json()
 
-        setTodo(data)
-        setIsLoading(false)
-    }
+    //     setTodo(data)
+    //     setIsLoading(false)
+    // }
 
     const filterHandler = () => {
         switch (status) {
@@ -44,38 +44,40 @@ export const TodoProvider = ({ children }) => {
 
     useEffect(() => {
         filterHandler()
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [todo, status])
 
     const addTodo = async (newTodo) => {
-        const response = await fetch(`http://localhost:5000/todo`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newTodo),
-        })
+        // const response = await fetch(`http://localhost:5000/todo`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(newTodo),
+        // })
 
-        const data = await response.json()
+        // const data = await response.json()
 
+        newTodo.id = uuidv4()
         setTodo([data, ...todo])
     }
 
     const updateTodo = async (id, updItem) => {
-        const response = await fetch(`http://localhost:5000/todo/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updItem),
-        })
+        // const response = await fetch(`http://localhost:5000/todo/${id}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(updItem),
+        // })
 
-        const data = await response.json()
+        // const data = await response.json()
 
-        setTodo(
-            todo.map((item) => (item.id === id ? { ...item, ...data } : item))
+        const updateTodo = todo.map((item) =>
+            item.id === id ? { ...item, ...updItem } : item
         )
+
+        setTodo(updateTodo)
     }
 
     const editTodo = (item) => {
@@ -87,33 +89,39 @@ export const TodoProvider = ({ children }) => {
 
     const deleteTodo = async (id) => {
         if (window.confirm('Are you sure you want to delete ?')) {
-            await fetch(`http://localhost:5000/todo/${id}`, {
-                method: 'DELETE',
-            })
+            // await fetch(`http://localhost:5000/todo/${id}`, {
+            //     method: 'DELETE',
+            // })
             setTodo(todo.filter((item) => item.id !== id))
         }
     }
 
     const completedTodo = async (id, item) => {
-        const newTodo = {
-            id: item.id,
-            text: item.text,
-            completed: !item.completed,
-        }
+        // const newTodo = {
+        //     id: item.id,
+        //     text: item.text,
+        //     completed: !item.completed,
+        // }
 
-        const response = await fetch(`http://localhost:5000/todo/${item.id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newTodo),
-        })
+        // const response = await fetch(`http://localhost:5000/todo/${item.id}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(newTodo),
+        // })
 
-        const data = await response.json()
+        // const data = await response.json()
 
-        setTodo(
-            todo.map((item) => (item.id === id ? { ...item, ...data } : item))
+        // setTodo(
+        //     todo.map((item) => (item.id === id ? { ...item, ...data } : item))
+        // )
+
+        const completedTodo = todo.map((item) =>
+            item.id === id ? { ...item, completed: !item.completed } : item
         )
+
+        setTodo(completedTodo)
     }
 
     return (
