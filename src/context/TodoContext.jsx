@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 const TodoContext = createContext()
 
@@ -59,7 +60,7 @@ export const TodoProvider = ({ children }) => {
         // const data = await response.json()
 
         newTodo.id = uuidv4()
-        setTodo([data, ...todo])
+        setTodo([newTodo, ...todo])
     }
 
     const updateTodo = async (id, updItem) => {
