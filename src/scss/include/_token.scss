@@ -1,0 +1,77 @@
+:root {
+    /*
+ * Specifying Color Variable
+ */
+
+    --text-color: var(--var-color-neutralBlack);
+    --body-backgroundColor: var(--var-color-neutralWhite);
+    --body-textColor: var(--var-color-neutralBlack);
+    --body-textColorLight: var(--var-color-neutralBlack);
+    --var-color-neutralWhite: #fff;
+    --var-color-neutralBlack: #333;
+    --var-color-primary: #ca8f48;
+    --var-color-primaryHover: #815d30;
+    --var-color-secondary: #0b24fb;
+
+    /*
+ * Specifying Spacing Variable
+ */
+
+    --var-spacing-4xs: 0.25rem;
+    --var-spacing-3xs: 0.5rem;
+    --var-spacing-2xs: 0.75rem;
+    --var-spacing-xs: 0.875rem;
+    --var-spacing-s: 1rem;
+    --var-spacing-m: 1.25rem;
+    --var-spacing-l: 1.5rem;
+    --var-spacing-xl: 2rem;
+    --var-spacing-2xl: 3rem;
+    --var-spacing-3xl: 4rem;
+
+    /*
+ * Specifying Typography Variable
+ */
+
+    // Global
+    --primary-font: var(--var-font-family);
+    --var-font-regular: "Raleway";
+    --var-font-family: var(--var-font-regular), system-ui, -apple-system,
+        /* Firefox supports this but not yet `system-ui` */ "Segoe UI", roboto, helvetica, arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji";
+    --var-font-family-monospace: source-code-pro, menlo, monaco, consolas, "Courier New", monospace;
+
+    // Font Size
+    --font-base: 1rem;
+    --font-desktop-base: var(--var-font-desktop-m);
+    --var-font-desktop-2xs: 0.75rem;
+    --var-font-desktop-xs: 0.875rem;
+    --var-font-desktop-s: 1rem;
+    --var-font-desktop-m: 1.125rem;
+    --var-font-desktop-l: 2rem;
+    --var-font-desktop-xl: 4rem;
+    --var-font-mobile-2xs: 0.625rem;
+    --var-font-mobile-xs: 0.75rem;
+    --var-font-mobile-s: 0.875rem;
+    --var-font-mobile-m: 1rem;
+    --var-font-mobile-l: 2rem;
+    --var-font-mobile-xl: 3.25rem;
+
+    // Line Height
+    --line-height-base: var(--var-line-height-regular);
+    --var-line-height-regular: 1.5;
+    --var-line-height-heading-small: 1.25;
+    --var-line-height-heading-big: 1.125;
+
+    // Font Weight
+    --font-weight-base: var(--var-font-weight-regular);
+    --var-font-weight-light: 300;
+    --var-font-weight-regular: 400;
+    --var-font-weight-medium: 500;
+    --var-font-weight-semiBold: 600;
+    --var-font-weight-bold: 700;
+    --var-font-weight-black: 900;
+
+    // Z-Index
+    --var-z-index-10: 10;
+    --var-z-index-100: 100;
+}
